@@ -1,0 +1,28 @@
+<h1>beeeeeerrr</h1>
+
+<!-- <a href="< lastPage >" >Back, BACK I say!</a> -->
+
+<% if(currentUser) { %>
+
+<!-- no searching if not logged in -->
+
+
+
+
+<form action="/beers" method="GET" role="form">
+  <legend>Search for your favorite beers</legend>
+
+  <div class="form-group">
+    <label for="">Search</label>
+    <input type="text" class="form-control" id="" placeholder="ex. stout" name="q">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<% } else { %>
+
+ <h1> Log in to search for beers! </h1>
+ <a href="/auth/login" class="btn btn-info">Log in</a>
+ <a href="/auth/signup" class="btn btn-success">Sign up</a>
+
+ <% }; %>
