@@ -7,6 +7,14 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        models.comment.belongsTo(models.favorite);
+        
+        // IF YOU CREATE A FAVORITE AND LATER WANT TO ADD A COMMENT: 
+
+            // db.favorite.findOne().then(function(favorite) {
+  //associate previously loaded post instance
+      // favorite.addComment(comment);
+// });
       }
     }
   });

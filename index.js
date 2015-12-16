@@ -20,23 +20,33 @@ app.use(flash());
    });
 
 
-// app.post('/login', function(req,res){
-// 	var password = req.body.password;
-// 	var newPassword;
-// 	bcrypt.hash(password, 3, function(err, hash){
-// 		newPassword = hash;
 
-// 		bcrypt.compare(password, newPassword,function(err, res){
-// 			if (res === true){
-// 				res.render(//whatever page
-// 					);
-// 			} else {
-// 					res.redirect('/login'); //write error response, please try again, etc.
-// 			}
-// 		});
-// 	});
-// 		// db.create();
-// })
+/////// using SESSION
+app.use(session({
+  secret: 'so many secrets and beeeeers123',
+  resave: false,
+  saveUninitialized: true
+}));
+
+
+
+
+app.post('/login', function(req,res){
+	var password = req.body.password;
+	var newPassword;
+	bcrypt.hash(password, 10, function(err, hash){
+		newPassword = hash;
+
+		bcrypt.compare(password, newPassword,function(err, res){
+			if (res === true){
+				res.render('/homeLoggedIn');
+			} else {
+					res.redirect('/login'); //write error response, please try again, etc.
+			}
+		});
+	});
+		// db.create();
+})
 
 
 app.use('/beers', require('./controllers/beer'));

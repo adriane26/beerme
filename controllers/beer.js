@@ -7,27 +7,41 @@ router.get('/', function(req, res) {
   // debugger
   request(('http://api.brewerydb.com/v2/search?q='+query+'&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
     var data = JSON.parse(body);
-    console.log(data);
+    // console.log(data);
     if (!err && response.statusCode === 200 && data.data[0].name) {
       res.render('beers/index', {beers: data,
                             q: query});
       // console.log(beers);
       // console.log(data.Search);
-    } else {
+     } 
+     // else if (query == '') {
+    //   ////// if !query, render brewmaster's choice
+    //   request(('http://api.brewerydb.com/v2/beer/random?key='+process.env.API_KEY),
+    //     function(err, response, body){
+    //       // var data = JSON.parse(body);
+    //     res.render('beers/index', {beers:data});
+    //      });
+
+    // } 
+    else {
       res.render('error');
     }
-  }); ////// if !query, render brewmaster's choice
+    
+   }); 
 });
 
 
-
-router.get('/:imdbID', function(req, res) {
+//////work on this!  
+router.get('beers/show/:id', function(req, res) {
   // res.send(req.params.imdbID);
   var searchQuery = req.query.q ? req.query.q : '';
-  var imdbID = req.params.imdbID;
-  request('http://www.omdbapi.com/?i=' + imdbID, function(err, response, body) {
-    res.render('movies/show', {movie: JSON.parse(body),
+  var id = req.params.id;
+  request(('http://api.brewerydb.com/v2/beer/' + id+'?&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
+    var data = JSON.parse(body);
+    console.log(data);
+    res.render('beers/show/', {beer: JSON.parse(body),
                              q: searchQuery});
+    console.log(searchQuery);
   });
 });
 

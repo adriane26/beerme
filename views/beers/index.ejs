@@ -5,7 +5,14 @@
 		<% return; %>
 	<% } else { %>
 		<div class="well">
-		 <a href="<%= '/beers/show' + beer.id %>"><h2><%= beer.breweries[0].name +' '+ beer.name %></h2></a>
+		 <a href="<%= 'beers/show/' + beer.id %>"><h2><%= beer.breweries[0].name +' '+ beer.name %></h2></a>
+
+<form method="POST" action="/favorites">
+  <input type="hidden" value="<%= beer.id %>" name="beerId">
+  <input type="hidden" value="<%= beer.name %>" name="beerName">
+  <input type="hidden" value="<%= beer.breweries.name %>" name="breweryName">
+  <input type="submit" class="btn btn-success" value="Add to Favorites">
+</form>
 		</div>
 	<% } %>
 <% }); %>

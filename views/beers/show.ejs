@@ -1,32 +1,32 @@
-<h1><%= beer.breweries.name +' '+ beer.name %></h1>
+<h1><%= data.breweries.name +' '+ data.name %></h1>
 
-<a href="<%= '/movies/?q=' + q %>" class="btn btn-primary">&larr; Back to Search</a>
+
 
 <div class="well">
-  <p><%= beer.labels.medium %></p>
+  <p><%= data.labels.icon %></p>
 
-  <p><%= beer.description %></p>
+  <p><%= data.description %></p>
 
-  <p><%= beer.abv %></p>
+  <p><%= data.abv %></p>
 
-  <p><%= beer.style.shortName %></p>
+  <p><%= data.style.shortName %></p>
 </div>
 
 <form method="POST" action="/favorites">
-  <input type="hidden" value="<%= movie.imdbID %>" name="imdbID">
-  <input type="hidden" value="<%= movie.Year %>" name="year">
-  <input type="hidden" value="<%= movie.Title %>" name="title">
+  <input type="hidden" value="<%= data.id %>" name="beerId">
+  <input type="hidden" value="<%= data.name %>" name="beerName">
+  <input type="hidden" value="<%= data.breweries.name %>" name="breweryName">
   <input type="submit" class="btn btn-success" value="Add to Favorites">
 </form>
 
 
+<!-- 
 
-
-data.breweries.name    beer.breweries[0].name
+data.breweries.name    beer.breweries[0].name   BREWERY NAME IS NOT WORKING... 
 (data.breweries.website)
 data.name (or data.nameDisplay)
 data.labels.medium (or .icon), else use brewery icon, else use logo
 data.breweries.images.icon (use this website as img src="")
 data.description
 data.abv
-data.style.shortName
+data.style.shortName -->
