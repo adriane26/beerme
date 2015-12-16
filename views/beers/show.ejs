@@ -1,0 +1,32 @@
+<h1><%= beer.breweries.name +' '+ beer.name %></h1>
+
+<a href="<%= '/movies/?q=' + q %>" class="btn btn-primary">&larr; Back to Search</a>
+
+<div class="well">
+  <p><%= beer.labels.medium %></p>
+
+  <p><%= beer.description %></p>
+
+  <p><%= beer.abv %></p>
+
+  <p><%= beer.style.shortName %></p>
+</div>
+
+<form method="POST" action="/favorites">
+  <input type="hidden" value="<%= movie.imdbID %>" name="imdbID">
+  <input type="hidden" value="<%= movie.Year %>" name="year">
+  <input type="hidden" value="<%= movie.Title %>" name="title">
+  <input type="submit" class="btn btn-success" value="Add to Favorites">
+</form>
+
+
+
+
+data.breweries.name    beer.breweries[0].name
+(data.breweries.website)
+data.name (or data.nameDisplay)
+data.labels.medium (or .icon), else use brewery icon, else use logo
+data.breweries.images.icon (use this website as img src="")
+data.description
+data.abv
+data.style.shortName

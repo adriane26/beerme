@@ -1,0 +1,14 @@
+<h1>Search Results</h1>
+
+<% beers.data.forEach(function(beer) { %>
+	<% if(beer.type === 'brewery') { %>
+		<% return; %>
+	<% } else { %>
+		<div class="well">
+		 <a href="<%= '/beers/show' + beer.id %>"><h2><%= beer.breweries[0].name +' '+ beer.name %></h2></a>
+		</div>
+	<% } %>
+<% }); %>
+
+
+<!-- href will be beers/show/beer.id -->

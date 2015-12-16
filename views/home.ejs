@@ -2,7 +2,6 @@
 
 <!-- <a href="< lastPage >" >Back, BACK I say!</a> -->
 
-<% if(currentUser) { %>
 
 <!-- no searching if not logged in -->
 
@@ -16,13 +15,9 @@
     <label for="">Search</label>
     <input type="text" class="form-control" id="" placeholder="ex. stout" name="q">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">this way for tasty beers</button>
 </form>
-
-<% } else { %>
 
  <h1> Log in to search for beers! </h1>
  <a href="/auth/login" class="btn btn-info">Log in</a>
  <a href="/auth/signup" class="btn btn-success">Sign up</a>
-
- <% }; %>
