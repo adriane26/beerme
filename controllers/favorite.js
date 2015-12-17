@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('./../models');
+var db = require('../models');
 var request = require('request');
 var router = express.Router();
 
@@ -11,7 +11,7 @@ router.post('/', function(req, res) {
       beerId: req.body.id
     },
     defaults: {
-      beerName: req.body.name,
+      beerName: req.body.name
      // breweryName: req.body.data.breweries.name ////doesn't like how to find brewery name, hangs when i remove this part
     }
   }).spread(function(favorite, created) {

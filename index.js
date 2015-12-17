@@ -14,11 +14,6 @@ app.use(express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(flash());
 
- app.get('/', function(req, res) {
-
-  res.render('home');
-   });
-
 
 
 /////// using SESSION
@@ -28,32 +23,60 @@ app.use(session({
   saveUninitialized: true
 }));
 
+///// session
+app.use(function(req,res,next){
+  // req.session.user = 8;
+  if(req.session.user){
+    db.user.findById(req.session.user).then(function(user){
+      req.currentUser = user;
+      next();
+    });
+
+  }else{
+    req.currentUser = false;
+    next();
+  }
+});
+
+app.use(function(req,res,next){
+  res.locals.currentUser = req.currentUser;
+  res.locals.alerts = req.flash();
+  next();
+});
+///////// end session info
 
 
+app.get('/', function(req, res) {
+  res.render('home'); 
+});
 
-app.post('/login', function(req,res){
+
+////// I THINK I SHOULD PUT THIS ON THE AUTH CONTROLLER ... /////  
+app.post('/auth/login', function(req,res){
 	var password = req.body.password;
 	var newPassword;
 	bcrypt.hash(password, 10, function(err, hash){
 		newPassword = hash;
 
-		bcrypt.compare(password, newPassword,function(err, res){
-			if (res === true){
-				res.render('/homeLoggedIn');
+		bcrypt.compare(password, newPassword,function(err, resp){
+			if (resp === true){
+				resp.render('home');
 			} else {
-					res.redirect('/login'); //write error response, please try again, etc.
+					resp.redirect('/login'); //write error response, please try again, etc.
 			}
 		});
 	});
-		// db.create();
-})
+		 // db.create();   /// says this is not a function
+});
+
+//////// need help with above saying res.render is not a function
 
 
+
+///////////// good stuff
 app.use('/beers', require('./controllers/beer'));
 app.use('/favorites', require('./controllers/favorite'));
 app.use('/auth', require('./controllers/auth.js'));  ////first part is url string, second part is page rendered
-
-
 
 
 

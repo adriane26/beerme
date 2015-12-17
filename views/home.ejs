@@ -1,26 +1,37 @@
-<h1><span id="beermefont">Beer Me!</span></h1>
+<% if(currentUser) { %>
+
+
+ 	<form action="/beers" method="GET" role="form">
+  	<legend>Search for your favorite beers</legend>
+
+  	<div class="form-group">
+    	<label for="">Search</label>
+    	<input type="text" class="form-control" id="" placeholder="ex. stout" name="q">
+  	</div>
+  		<button type="submit" class="btn btn-primary">this way for tasty beers</button>
+	</form>
+
+	<hr>
+
+<!-- BREWMASTER'S CHOICE - random selection. WANT THIS ACTION TO HAPPEN WHEN NO SEARCH QUERY IS '' -->
+	<form action="/beers/show/random" method="GET" role="form">
+		<button type="submit" class="btn btn-primary">brewmaster's choice</button>
+	</form>
+
+<!-- no searching if not logged in, home is landing page and log in/sign up buttons -->
+
+
+<% } else { %>
+
+	<h1><span id="beermefont">Beer Me!</span></h1>
 <p>Wish you could remember that delicious beer you had (that one time) in the not-so-distant past? <span id="beermefont"> Beer Me!</span> allows you to keep them all in a neat little list. Keep tasting notes with the comments feature. Which beer was the best? Rate the beers on your list. Want to search and discover new beers to add to your To Drink list? <span id="beermefont">Beer Me!</span> </p>
 
-<!-- <a href="< lastPage >" >Back, BACK I say!</a> -->
 
-
-<!-- no searching if not logged in, this will eventually just be the landing page and log in/sign up buttons -->
-
-
-
-
-<form action="/beers" method="GET" role="form">
-  <legend>Search for your favorite beers</legend>
-
-  <div class="form-group">
-    <label for="">Search</label>
-    <input type="text" class="form-control" id="" placeholder="ex. stout" name="q">
-  </div>
-  <button type="submit" class="btn btn-primary">this way for tasty beers</button>
-</form>
 
  <h1> Log in to search for beers! </h1>
  <a href="/auth/login" class="btn btn-info">Log in</a>
  <a href="/auth/signup" class="btn btn-success">Sign up</a>
 
- <!-- auth/login and auth/signup will both reroute to homeLoggedIn --> 
+<% } %>
+
+
