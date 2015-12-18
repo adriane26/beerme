@@ -11,8 +11,11 @@ module.exports = {
       beerName: {
         type: Sequelize.STRING
       },
-      breweryName: {
+      beerId: {
         type: Sequelize.STRING
+      },
+      userId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

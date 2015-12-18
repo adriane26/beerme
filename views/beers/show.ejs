@@ -1,21 +1,21 @@
-<h1><%= data.breweries.name +' '+ data.name %></h1>
+<h1><%= beer.data.breweries[0].name +' '+ beer.data.name %></h1>
 
 
 
 <div class="well">
-  <p><%= data.labels.icon %></p>
+  <img src="<%= beer.data.labels.icon %>">
 
-  <p><%= data.description %></p>
+  <p><%= beer.data.description %></p>
 
-  <p><%= data.abv %></p>
+  <p><%= beer.data.abv %></p>
 
-  <p><%= data.style.shortName %></p>
+  <p><%= beer.data.style.shortName %></p>
 </div>
 
 <form method="POST" action="/favorites">
-  <input type="hidden" value="<%= data.id %>" name="beerId">
-  <input type="hidden" value="<%= data.name %>" name="beerName">
-  <input type="hidden" value="<%= data.breweries.name %>" name="breweryName">
+  <input type="hidden" value="<%= beer.data.id %>" name="beerId">
+  <input type="hidden" value="<%= beer.data.name %>" name="beerName">
+  <input type="hidden" value="<%= currentUser.id %>" name="userId">
   <input type="submit" class="btn btn-success" value="Add to Favorites">
 </form>
 

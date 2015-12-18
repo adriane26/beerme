@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
   var query = req.query.q;
   // debugger
   if(!query){ 
-    res.redirect('/beers/show/random');
+    res.redirect('/beers/random?');
   } else {
     request(('http://api.brewerydb.com/v2/search?q='+query+'&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
       var data = JSON.parse(body);
@@ -35,8 +35,9 @@ router.get('/', function(req, res) {
     } 
 });
 
+
 ////////// LOGIC FOR SHOW ONE BEER DESCRIPTION BELOW
-//////work on this!  
+// //////work on this!  
 router.get('/show/:id', function(req, res) {
   // res.send(req.params.imdbID);
   var searchQuery = req.query.q ? req.query.q : '';
@@ -44,7 +45,7 @@ router.get('/show/:id', function(req, res) {
   request(('http://api.brewerydb.com/v2/beer/' + id+'?&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
     var data = JSON.parse(body);
     console.log(data);
-    res.render('beers/show/', {beer: JSON.parse(body),
+    res.render('beers/show', {beer: JSON.parse(body),
                              q: searchQuery});
     console.log(searchQuery);
   });
@@ -52,17 +53,19 @@ router.get('/show/:id', function(req, res) {
 
 
 
-///// BREWMASTER'S CHOICE: how is this linked to the button?  SHOULD THE "SUBMIT" QUERY BE 'random?key=' ? DO I NEED A NEW PAGE? 
-
-router.get('/show/random', function(req, res) {
+///// BREWMASTER'S CHOICE: //////////
+router.get('/random?', function(req, res) {
   var query = req.query.q;
-
-  request(('http://api.brewerydb.com/v2/beer/random?key='+process.env.API_KEY), function(err, response, body) {
+  request(('http://api.brewerydb.com/v2/beer/random?&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
     var data = JSON.parse(body);
-    console.log(data);
-    if (!err && response.statusCode === 200 && data.data[0].name) {
-      res.render('beers', {beers: data,
+    // res.send(data);
+    console.log(data.message)
+    console.log(typeof err)
+    console.log(body)
+    if (data.message === "Request Successful") {  //// whether it's data.data[0] or data[0], same error page. i am getting data back, just need to add to page.
+      res.render('beers/random', {beers: data,
                             q: query});
+    console.log(err);
     } else {
       res.render('error');
     }

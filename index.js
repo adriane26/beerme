@@ -4,7 +4,7 @@ var request = require('request');
 var session   = require('express-session');
 var bcrypt = require('bcrypt');
 var bodyParser = require('body-parser');
-var db = ('./models');
+var db = require('./models');
 var flash = require('connect-flash');
 var app = express();
 
@@ -46,30 +46,11 @@ app.use(function(req,res,next){
 ///////// end session info
 
 
+
+//// show me the home page
 app.get('/', function(req, res) {
   res.render('home'); 
 });
-
-
-////// I THINK I SHOULD PUT THIS ON THE AUTH CONTROLLER ... /////  
-app.post('/auth/login', function(req,res){
-	var password = req.body.password;
-	var newPassword;
-	bcrypt.hash(password, 10, function(err, hash){
-		newPassword = hash;
-
-		bcrypt.compare(password, newPassword,function(err, resp){
-			if (resp === true){
-				resp.render('home');
-			} else {
-					resp.redirect('/login'); //write error response, please try again, etc.
-			}
-		});
-	});
-		 // db.create();   /// says this is not a function
-});
-
-//////// need help with above saying res.render is not a function
 
 
 

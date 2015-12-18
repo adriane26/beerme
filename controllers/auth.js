@@ -1,4 +1,5 @@
 var db = require('../models');
+var flash = require('connect-flash');
 var express = require('express');
 // var request = require('request');
 var router = express.Router();
@@ -13,7 +14,6 @@ router.get('/login',function(req,res){
 //POST /login
 //process login data and login user
 router.post('/login',function(req,res){
-
   db.user.authenticate(req.body.email,req.body.password,function(err,user){
     if(err){
       res.send(err);
@@ -36,8 +36,8 @@ router.get('/signup',function(req,res){
 });
 
 
-///////// GET /homeloggedin if
-router.get('/homeloggedin'); 
+///////// GET home page... 
+// router.get('/'); 
 
 //POST /auth/signup
 //create new user in database
@@ -82,7 +82,7 @@ router.post('/signup',function(req,res){
 router.get('/logout',function(req,res){
   req.flash('info','You have been logged out.');
   req.session.user = false;
-  res.redirect('/home');
+  res.redirect('/');
 });
 
 
@@ -96,8 +96,24 @@ router.get('/logout',function(req,res){
 // });
 
 
+///// originally had the below on the index.js ///// 
 
+// router.post('/auth/login', function(req,res){
+// 	var password = req.body.password;
+// 	var newPassword;
+// 	bcrypt.hash(password, 10, function(err, hash){
+// 		newPassword = hash;
 
+// 		bcrypt.compare(password, newPassword,function(err, resp){
+// 			if (resp === true){
+// 				resp.render('home');
+// 			} else {
+// 					resp.redirect('/login'); //write error response, please try again, etc.
+// 			}
+// 		});
+// 	});
+// 		 db.user.create();  
+// });
 
 
 module.exports = router;

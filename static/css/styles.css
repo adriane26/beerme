@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico|Satisfy|Marck+Script|Yellowtail);
+
+
+div.container{
+	background: url("images/Beer-Background.jpg");
+	background-position: center;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		background-size: cover;
+}
+

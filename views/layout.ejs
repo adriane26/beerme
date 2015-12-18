@@ -2,23 +2,65 @@
 <html>
 <head>
   <!-- Latest compiled and minified CSS & JS -->
-  <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="//code.jquery.com/jquery.js"></script>
+  	<link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
   <title>BeerMe!</title>
 </head>
 <body>
 
-<div class="container">
+<!-- <div class="container">
 	<div class="row">
-	<% include ./partials/alerts %>
+	< include ./partials/alerts %>
 	</div>
-</div>
-<div class="container">
-<a href="/">home</a>
-<a href="/about">about</a>
+</div> -->
+
+
+
+<!-- NAV BAR DISPLAYS ONCE SOMEONE IS SIGNED IN -->
+
+<% if(currentUser) { %>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" id="beermefont" href="/">Beer Me!</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/favorites">Favorites</a></li>
+      <ul class="nav navbar-nav">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+      <p id="helloUserName" class="navbar-text">Hello,  <%= currentUser.name %> </p>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<% } else { %>
+ <p> </p>
+ <% } %>
+
+
+
+
+<div id="background" class="container">
+<!-- <a href="/">home</a>
+<a href="/about">about</a> -->
   <%- body %>
 </div>
-<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+	<!-- add footer here -->
 </body>
 </html>

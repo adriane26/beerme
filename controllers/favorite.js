@@ -11,18 +11,20 @@ router.post('/', function(req, res) {
       beerId: req.body.id
     },
     defaults: {
-      beerName: req.body.name
-     // breweryName: req.body.data.breweries.name ////doesn't like how to find brewery name, hangs when i remove this part
+      beerName: req.body.name,
+     // breweryName: req.body.breweries[0].name 
+     ////doesn't like how to find brewery name, hangs when i remove this part
+     userId: req.currentUser.id
     }
   }).spread(function(favorite, created) {
-    console.log(favorite.get());
+    // console.log(favorite.get());
     res.redirect('/');
   });
 });
 
 router.get('/', function(req, res) {
   db.favorite.findAll({
-    order: 'beerName ASC' //// this will change to rating desc when I update
+    // order: 'beerName ASC' //// this will change to rating desc when I update
   }).then(function(favorites) {
     res.render('favorites/index', {favorites: favorites});
   });
