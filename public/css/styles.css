@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico|Satisfy|Marck+Script|Yellowtail);
 @import url(https://fonts.googleapis.com/css?family=Poppins|Raleway|Gruppo|Poiret+One|Josefin+Sans);
 
-div#background{
+body {
 	background: url("images/Beer-Background.jpg");
 	background-attachment: fixed;
 	background-position: center;
@@ -12,6 +12,7 @@ div#background{
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		background-size: cover;
+	margin-bottom: 60px;
 }
 
 /*body {
@@ -24,9 +25,10 @@ html {
   min-height: 100%;
 }
 
-body {
+/*body {*/
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  /*margin-bottom: 60px;*/
+
 }
 
 .footer {
