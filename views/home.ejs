@@ -1,8 +1,8 @@
 <% if(currentUser){ %>
 
 
- 	<form action="/beers" method="GET" role="form">
-  	<legend>Search for your favorite beers</legend>
+ 	<form action="/beer" method="GET" role="form">
+  	<h3>Search for your favorite beers</h3>
 
   	<div class="form-group">
     	<label for="">Search</label>
@@ -11,10 +11,9 @@
   		<button type="submit" class="btn btn-primary">This Way For Tasty Beers &rarr;</button>
 	</form>
 
-	<hr>
-
+<br>
 <!-- BREWMASTER'S CHOICE - random selection. WANT THIS ACTION TO HAPPEN WHEN SEARCH QUERY IS '' -->
-	<form action="/beers/random" method="GET" role="form">
+	<form action="/beer/random" method="GET" role="form">
 		<button type="submit" id="choice" class="btn btn-primary">Brewmaster's Choice</button>
 	</form>
 
@@ -23,12 +22,12 @@
 
    <% }else{ %>
 
-	<h1><span id="beermefont">Beer Me!</span></h1>
-<p>Wish you could remember that delicious beer you had (that one time) in the not-so-distant past? <span id="beermefont"> Beer Me!</span> allows you to keep them all in a neat little list. Keep tasting notes with the comments feature (coming soon!). Which beer was the best? Rate the beers on your list (coming soon!). Want to search and discover new beers to add to your To Drink list? <span id="beermefont">Beer Me!</span> </p>
+	<h1 id="beermeh1"><span class="beermefont">Beer Me!</span></h1>
+<p class="landingp">Wish you could remember that delicious beer you had in the not-so-distant past? <span class="beermefont"> Beer Me! </span> allows you to keep them all in a neat little list. Keep tasting notes with the comments feature (coming soon!). Which beer was the best? Rate the beers on your list (coming soon!). Want to search and discover new beers to add to your To Drink list? <span class="beermefont"> Beer Me!</span> </p>
 
 
 
- <h1> Log in to search for beers! </h1>
+ <h1 id="landingh1"> Log in to search for beers! </h1>
  <a href="/auth/login" class="btn btn-info">Log in</a>
  <a href="/auth/signup" class="btn btn-success">Sign up</a>
 <% } %>

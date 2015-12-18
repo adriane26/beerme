@@ -7,13 +7,13 @@ router.get('/', function(req, res) {
   var query = req.query.q;
   // debugger
   if(!query){ 
-    res.redirect('/beers/random?');
+    res.redirect('/beer/random?');
   } else {
     request(('http://api.brewerydb.com/v2/search?q='+query+'&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
       var data = JSON.parse(body);
       // console.log(data);
       if (!err && response.statusCode === 200 && data.data[0].name) {
-        res.render('beers/index', {beers: data,
+        res.render('beer/index', {beers: data,
                               q: query});
         // console.log(beers);
         // console.log(data.Search);
@@ -37,7 +37,7 @@ router.get('/', function(req, res) {
 
 
 ////////// LOGIC FOR SHOW ONE BEER DESCRIPTION BELOW
-// //////work on this!  
+
 router.get('/show/:id', function(req, res) {
   // res.send(req.params.imdbID);
   var searchQuery = req.query.q ? req.query.q : '';
@@ -45,7 +45,7 @@ router.get('/show/:id', function(req, res) {
   request(('http://api.brewerydb.com/v2/beer/' + id+'?&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
     var data = JSON.parse(body);
     console.log(data);
-    res.render('beers/show', {beer: JSON.parse(body),
+    res.render('beer/show', {beer: JSON.parse(body),
                              q: searchQuery});
     console.log(searchQuery);
   });
@@ -63,7 +63,7 @@ router.get('/random?', function(req, res) {
     console.log(typeof err)
     console.log(body)
     if (data.message === "Request Successful") {  //// whether it's data.data[0] or data[0], same error page. i am getting data back, just need to add to page.
-      res.render('beers/random', {beers: data,
+      res.render('beer/random', {beers: data,
                             q: query});
     console.log(err);
     } else {

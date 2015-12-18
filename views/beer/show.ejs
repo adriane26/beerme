@@ -1,15 +1,24 @@
+<div class="container-fluid" id="beershow">
 <h1><%= beer.data.breweries[0].name +' '+ beer.data.name %></h1>
 
 
 
 <div class="well">
-  <img src="<%= beer.data.labels.icon %>">
+<% if(!beer.data.labels) { %>
+			<img src="../../beerimages/smbeericon.gif">
+	<% } else { %>
+   <img src="<%= beer.data.labels.medium %>">
+  <% }; %>
 
-  <p><%= beer.data.description %></p>
+  <p id="description"><%= beer.data.description %></p>
 
-  <p><%= beer.data.abv %></p>
+  <p id="abv">ABV: <%= beer.data.abv %></p>
 
-  <p><%= beer.data.style.shortName %></p>
+<% if (!beer.data.style) { %>
+	<p>Beer Style: too awesome for words</p>
+<% } else { %>
+  <p id="beerstyle">Beer Style: <%= beer.data.style.shortName %></p>
+  <% } %>
 </div>
 
 <form method="POST" action="/favorites">
@@ -18,7 +27,7 @@
   <input type="hidden" value="<%= currentUser.id %>" name="userId">
   <input type="submit" class="btn btn-success" value="Add to Favorites">
 </form>
-
+</div>
 
 <!-- 
 
@@ -30,3 +39,5 @@ data.breweries.images.icon (use this website as img src="")
 data.description
 data.abv
 data.style.shortName -->
+
+<!-- < user.name ? user.name : '' %> -->

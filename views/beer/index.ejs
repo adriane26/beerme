@@ -4,8 +4,8 @@
 	<% if(beer.type === 'brewery') { %>
 		<% return; %>
 	<% } else { %>
-		<div class="well">
-		 <a href="<%= 'beers/show/' + beer.id %>"><h2><%= beer.breweries[0].name +' '+ beer.name %></h2></a>
+		<div class="well well-sm">
+		 <a href="beer/show/<%=beer.id %>"><h3><%= beer.breweries[0].name +' '+ beer.name %></h3></a>
 
 <form method="POST" action="/favorites">
   <input type="hidden" value="<%= beer.id %>" name="beerId">

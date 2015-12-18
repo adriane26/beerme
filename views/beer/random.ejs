@@ -1,12 +1,12 @@
 <h1>Brewmaster's Choice!</h1>
 
-		<div class="well">
-		 <a href="beers/show/<%= beers.id %>"><h2><%= beers.data.breweries[0].name +' '+ beers.data.name %></h2></a>
+<div class="well well-sm">
+		 <a href="/beer/show/<%= beers.data.id %>"><h2><%= beers.data.breweries[0].name +' '+ beers.data.name %></h2></a>
 
-<form method="POST" action="/favorites">
+  <form method="POST" action="/favorites">
   <input type="hidden" value="<%= beers.data.id %>" name="beerId">
   <input type="hidden" value="<%= beers.data.name %>" name="beerName">
   <input type="hidden" value="<%= currentUser.id %>" name="userId">
   <input type="submit" class="btn btn-success" value="Add to Favorites">
-</form>
-		</div>
+  </form>
+</div>

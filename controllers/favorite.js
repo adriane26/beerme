@@ -32,18 +32,18 @@ router.get('/', function(req, res) {
 
 ///////////// DELETE BUTTON. SEE IF THERE'S A FAKE DESTROY/NOT PERMANENT
 
-// router.delete('/:imdbID', function(req, res) {
-//   db.favorite.destroy({
-//     where: {
-//       imdbID: req.params.imdbID
-//     }
-//   }).then(function() {
-//     res.send({'msg': 'success'});
-//   }).catch(function(e) {
-//     res.send({'msg': 'error', 'error': e});
-//   });
-// });
-
+router.delete('/:beerId', function(req, res) {
+  db.favorite.destroy({
+    where: {
+      beerId: req.params.beerId
+    }
+  }).then(function() {
+    res.send({'msg': 'success'});
+  }).catch(function(e) {
+    res.send({'msg': 'error', 'error': e});
+  });
+});
+ //// need to remove the div/well
 
 
 

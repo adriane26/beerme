@@ -1,15 +1,94 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico|Satisfy|Marck+Script|Yellowtail);
+@import url(https://fonts.googleapis.com/css?family=Poppins|Raleway|Gruppo|Poiret+One|Josefin+Sans);
 
-
-div.container{
+div#background{
 	background: url("images/Beer-Background.jpg");
+	background-attachment: fixed;
 	background-position: center;
-	height: 100%;
-	width: 100%;
-	position: fixed;
+	min-height: 100%;
+	width: 100%; 
+	
 	
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		background-size: cover;
 }
+
+/*body {
+	height: 100%;
+	margin: 0;
+	}*/
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.beermefont {
+	font-family: "Pacifico", sans-serif;
+}
+
+h1, h2, h3, h4 {
+	font-family: "Josefin Sans", sans-serif;
+	text-align: center;
+}
+
+.btn, p, li {
+	font-family: "Gruppo", sans-serif;
+}
+
+label {
+	font-family: "Yellowtail", sans-serif;
+}
+
+
+footer {
+	text-align: center;
+}
+
+#landingh1 {
+	font-weight: bold;
+	color: white;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.landingp {
+	font-size: 22px;
+	font-weight: bold;
+	color: black;
+	/*display: inline;*/
+	padding-top: 20px;
+	margin-top: 20px;
+}
+
+#beermeh1 {
+	padding-top: 80px;
+	color: black;
+	font-size: 48px;
+}
+
+
+
+
+
+
+
+
+
+
 

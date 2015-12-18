@@ -55,7 +55,7 @@ app.get('/', function(req, res) {
 
 
 ///////////// good stuff
-app.use('/beers', require('./controllers/beer'));
+app.use('/beer', require('./controllers/beer'));
 app.use('/favorites', require('./controllers/favorite'));
 app.use('/auth', require('./controllers/auth.js'));  ////first part is url string, second part is page rendered
 
