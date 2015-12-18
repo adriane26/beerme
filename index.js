@@ -10,7 +10,7 @@ var app = express();
 
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
-app.use(express.static(__dirname + '/static'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(flash());
 
