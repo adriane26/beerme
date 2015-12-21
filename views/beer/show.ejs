@@ -5,9 +5,9 @@
 
 <div class="well">
 <% if(!beer.data.labels) { %>
-			<img src="/css/images/beerglass.jpg">
+			<img class="img-responsive" src="/css/images/beerglass.jpg">
 	<% } else { %>
-   <img src="<%= beer.data.labels.medium %>">
+   <img class="img-responsive" src="<%= beer.data.labels.medium %>">
   <% }; %>
 
   <p id="description"><%= beer.data.description %></p>

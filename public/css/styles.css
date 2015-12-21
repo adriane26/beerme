@@ -19,12 +19,12 @@ body {
 	height: 100%;
 	margin: 0;
 	}*/
-
+/*
 html {
-  position: relative;
+  position: relative;   //// do i need this?
   min-height: 100%;
 }
-
+*/
 /*body {*/
   /* Margin bottom by footer height */
   /*margin-bottom: 60px;*/
@@ -36,7 +36,7 @@ html {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  /*height: 60px;*/
   background-color: #f5f5f5;
 }
 
@@ -69,15 +69,6 @@ footer {
 	padding-bottom: 20px;
 }
 
-.landingp {
-	font-size: 22px;
-	font-weight: bold;
-	color: black;
-	/*display: inline;*/
-	padding-top: 20px;
-	margin-top: 20px;
-}
-
 #beermeh1 {
 	padding-top: 80px;
 	color: black;
@@ -90,9 +81,19 @@ img {
     margin-right: auto;
 }
 
+.jumbotron {
+ 	background-color:rgba(255, 255, 255, 0.3);
+}
 
 
-
+#landingp {
+	font-size: 22px;
+	font-weight: bold;
+	color: black;
+	/*display: inline;*/
+	padding-top: 20px;
+	margin-top: 20px;
+}
 
 
 
