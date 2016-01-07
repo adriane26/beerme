@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-  db.favorite.findAll({
+  db.favorite.findAll({ /// where userId is currentUser
     // order: 'beerName ASC' //// this will change to rating desc when I update
   }).then(function(favorites) {
     res.render('favorites/index', {favorites: favorites});
