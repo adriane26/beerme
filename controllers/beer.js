@@ -39,19 +39,16 @@ router.get('/', function(req, res) {
 ////////// LOGIC FOR SHOW ONE BEER DESCRIPTION BELOW
 
 router.get('/show/:id', function(req, res) {
-  // res.send(req.params.imdbID);
   var searchQuery = req.query.q ? req.query.q : '';
   var id = req.params.id;
   request(('http://api.brewerydb.com/v2/beer/' + id+'?&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
     var data = JSON.parse(body);
-    console.log(data);
+    // console.log(data);
     res.render('beer/show', {beer: JSON.parse(body),
                              q: searchQuery});
-    console.log(searchQuery);
+    // console.log(searchQuery);
   });
 });
-
-
 
 ///// BREWMASTER'S CHOICE: //////////
 router.get('/random?', function(req, res) {
@@ -62,18 +59,13 @@ router.get('/random?', function(req, res) {
     console.log(data.message)
     console.log(typeof err)
     console.log(body)
-    if (data.message === "Request Successful") {  //// whether it's data.data[0] or data[0], same error page. i am getting data back, just need to add to page.
-      res.render('beer/random', {beers: data,
-                            q: query});
+    if (data.message === "Request Successful") {
+      res.render('beer/random', {beers: data, q: query});
     console.log(err);
     } else {
       res.render('error');
     }
   });
 });
-
-
-
-
 
 module.exports = router;

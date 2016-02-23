@@ -8,30 +8,40 @@ var router = express.Router();
 router.post('/', function(req, res) {
   db.favorite.findOrCreate({
     where: {
-      beerId: req.body.id
+      beerId: req.body.id,
+      userId: req.currentUser.id
     },
     defaults: {
-      beerName: req.body.name,
+      beerName: req.body.name
      // breweryName: req.body.breweries[0].name 
      ////doesn't like how to find brewery name, hangs when i remove this part
-     userId: req.currentUser.id
+     // userId: req.currentUser.id
     }
   }).spread(function(favorite, created) {
-    // console.log(favorite.get());
-    res.redirect('/');
+    console.log(favorite.get());
+    console.log(created);
+    res.redirect('/favorites');
   });
 });
 
+
 router.get('/', function(req, res) {
-  db.favorite.findAll({ /// where userId is currentUser
+  if (req.currentUser){
+  db.favorite.findAll({
+    where: {
+      userId: req.currentUser.id
+    }
     // order: 'beerName ASC' //// this will change to rating desc when I update
   }).then(function(favorites) {
     res.render('favorites/index', {favorites: favorites});
   });
+  } else {
+    req.flash('danger', 'You must be logged in to view your favorites');
+    res.redirect('/');
+  };
 });
 
-///////////// DELETE BUTTON. SEE IF THERE'S A FAKE DESTROY/NOT PERMANENT
-
+///////////// DELETE BUTTON.
 router.delete('/:beerId', function(req, res) {
   db.favorite.destroy({
     where: {
@@ -44,18 +54,5 @@ router.delete('/:beerId', function(req, res) {
   });
 });
  //// need to remove the div/well
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;

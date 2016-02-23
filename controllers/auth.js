@@ -34,8 +34,6 @@ router.post('/login',function(req,res){
 router.get('/signup',function(req,res){
     res.render('auth/signup');
 });
-
-
 ///////// GET home page... 
 // router.get('/'); 
 
@@ -85,10 +83,10 @@ router.get('/logout',function(req,res){
   res.redirect('/');
 });
 
-
-// router.get("/seekrit", function(req, res) {
+// /// if user not logged in, cannot access /favorites
+// router.get("/favorites", function(req, res) {
 // 	if (req.currentUser) {
-// 		res.render("main/seekrit");
+// 		res.render("main/favorites");
 // 	} else {
 // 		req.flash("danger", "ACCESS DENIED!");
 // 		res.redirect("/");
@@ -96,24 +94,6 @@ router.get('/logout',function(req,res){
 // });
 
 
-///// originally had the below on the index.js ///// 
-
-// router.post('/auth/login', function(req,res){
-// 	var password = req.body.password;
-// 	var newPassword;
-// 	bcrypt.hash(password, 10, function(err, hash){
-// 		newPassword = hash;
-
-// 		bcrypt.compare(password, newPassword,function(err, resp){
-// 			if (resp === true){
-// 				resp.render('home');
-// 			} else {
-// 					resp.redirect('/login'); //write error response, please try again, etc.
-// 			}
-// 		});
-// 	});
-// 		 db.user.create();  
-// });
 
 
 module.exports = router;

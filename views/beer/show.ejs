@@ -10,14 +10,14 @@
    <img class="img-responsive" src="<%= beer.data.labels.medium %>">
   <% }; %>
 
-  <p id="description"><%= beer.data.description %></p>
+  <h4 id="description"><%= beer.data.description %></h4>
 
-  <p id="abv">ABV: <%= beer.data.abv %></p>
+  <h4 id="abv">ABV: <%= beer.data.abv %></h4>
 
 <% if (!beer.data.style) { %>
-	<p>Beer Style: too awesome for words</p>
+	<h4>Beer Style: too awesome for words</h4>
 <% } else { %>
-  <p id="beerstyle">Beer Style: <%= beer.data.style.shortName %></p>
+  <h4 id="beerstyle">Beer Style: <%= beer.data.style.shortName %></h4>
   <% } %>
 </div>
 
@@ -28,16 +28,5 @@
   <input type="submit" class="btn btn-success" value="Add to Favorites">
 </form>
 </div>
-
-<!-- 
-
-data.breweries.name    beer.breweries[0].name   BREWERY NAME IS NOT WORKING... 
-(data.breweries.website)
-data.name (or data.nameDisplay)
-data.labels.medium (or .icon), else use brewery icon, else use logo
-data.breweries.images.icon (use this website as img src="")
-data.description
-data.abv
-data.style.shortName -->
 
 <!-- < user.name ? user.name : '' %> -->
