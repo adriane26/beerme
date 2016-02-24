@@ -5,4 +5,4 @@ I created Beer Me! as project 2 for General Assembly's WDI course, but also for 
 I wanted to be able to keep easily accessible notes on an extensive list of beers I've tried at tasting festivals. 
 My brother-in-law is known to rate beers with emoji faces in a note on his phone. Beer Me! will allow him to have a cohesive list of beers and ratings to reference conveniently.
 
-Now that you've read some user stories, check out the wireframes in the aptly named folder, then get to searching for some tasty beers at beer-me-already.herokuapp.com. Enjoy!
+Now that you've read some user stories, check out the wireframes in the aptly named folder, then get to searching for some tasty beers at [beer-me-already.herokuapp.com.](http://beer-me-already.herokuapp.com) Enjoy!
