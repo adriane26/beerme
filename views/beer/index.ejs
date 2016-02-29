@@ -6,20 +6,6 @@
 	<% } else { %>
 		<div class="well well-sm">
 		 <a href="beer/show/<%=beer.id %>"><h3><%= beer.breweries[0].name +' '+ beer.name %></h3></a>
-
-<!-- <form method="POST" action="/favorites">
-  <input type="hidden" value="<%= beer.id %>" name="beerId">
-  <input type="hidden" value="<%= beer.name %>" name="beerName">
-  <input type="hidden" value="<%= currentUser.id %>" name="userId">
-  <input type="submit" class="btn btn-success" value="Add to Favorites">
-  </form> -->
 		</div>
 	<% } %>
 <% }); %>
-
-
-<!-- href will be beers/show/beer.id -->
-
-
-
-<!-- BREWMASTER'S CHOICE LOGIC: should be same as above... -->

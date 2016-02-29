@@ -62,8 +62,3 @@ app.use('/auth', require('./controllers/auth.js'));  ////first part is url strin
 
 
 app.listen(process.env.PORT || 3000);
-
-
-
-
-
