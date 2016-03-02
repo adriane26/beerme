@@ -11,30 +11,16 @@ router.get('/', function(req, res) {
   } else {
     request(('http://api.brewerydb.com/v2/search?q='+query+'&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
       var data = JSON.parse(body);
-      // console.log(data);
       if (!err && response.statusCode === 200 && data.data[0].name) {
         res.render('beer/index', {beers: data,
-                              q: query});
-        // console.log(beers);
-        // console.log(data.Search);
-       } 
-       // else if (query == '') {
-      //   ////// if !query, render brewmaster's choice
-      //   request(('http://api.brewerydb.com/v2/beer/random?key='+process.env.API_KEY),
-      //     function(err, response, body){
-      //       // var data = JSON.parse(body);
-      //     res.render('beers/index', {beers:data});
-      //      });
-
-      // } 
+                                  q: query});
+      } 
       else {
         res.render('error');
       }
-      
      });
     } 
 });
-
 
 ////////// LOGIC FOR SHOW ONE BEER DESCRIPTION BELOW
 
@@ -43,10 +29,8 @@ router.get('/show/:id', function(req, res) {
   var id = req.params.id;
   request(('http://api.brewerydb.com/v2/beer/' + id+'?&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
     var data = JSON.parse(body);
-    // console.log(data);
     res.render('beer/show', {beer: JSON.parse(body),
                              q: searchQuery});
-    // console.log(searchQuery);
   });
 });
 
@@ -56,9 +40,7 @@ router.get('/random?', function(req, res) {
   request(('http://api.brewerydb.com/v2/beer/random?&withBreweries=Y&key='+process.env.API_KEY), function(err, response, body) {
     var data = JSON.parse(body);
     // res.send(data);
-    console.log(data.message)
-    console.log(typeof err)
-    console.log(body)
+    // console.log("this is the data.message for brewmaster's choice: " +data.message)
     if (data.message === "Request Successful") {
       res.render('beer/random', {beers: data, q: query});
     console.log(err);

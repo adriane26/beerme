@@ -13,37 +13,31 @@ body {
 	margin-bottom: 60px;
 }
 
-/*body {
-	height: 100%;
-	margin: 0;
-	}*/
-/*
-html {
-  position: relative;   //// do i need this?
-  min-height: 100%;
+body {
+	margin: 0 0 40px;
 }
-*/
-/*body {*/
-  /* Margin bottom by footer height */
-  /*margin-bottom: 60px;*/
 
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 .footer {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   width: 100%;
   /* Set the fixed height of the footer here */
-  /*height: 60px;*/
-  background-color: #f5f5f5;
-}
-
-footer {
-	text-align: center;
+  height: 40px;
+  /*background-color: #f5f5f5;*/
+  background-color: #FFF9F9;
+  /*background-color: #E4D5D5;*/
+  text-align: center;
+  vertical-align: middle;
 }
 
 .beermefont {
 	font-family: "Pacifico", sans-serif;
+	color: black;
 }
 
 h1, h2, h3, h4 {
@@ -66,7 +60,7 @@ label {
 	padding-bottom: 20px;
 }
 
-#beermeh1 {
+.beermeh1 {
 	padding-top: 80px;
 	color: black;
 	font-size: 48px;
@@ -78,12 +72,11 @@ img {
     margin-right: auto;
 }
 
-.jumbotron {
+.jumbotron, .aboutp {
  	background-color:rgba(255, 255, 255, 0.3);
 }
 
-
-#landingp {
+.landingp {
 	font-size: 22px;
 	font-weight: bold;
 	color: black;

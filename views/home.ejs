@@ -14,27 +14,24 @@
 <br>
 <!-- BREWMASTER'S CHOICE - random selection. WANT THIS ACTION TO HAPPEN WHEN SEARCH QUERY IS '' -->
 	<form action="/beer/random" method="GET" role="form">
-		<button type="submit" id="choice" class="btn btn-primary">Brewmaster's Choice</button>
+		<button type="submit" id="choice" class="btn btn-info">Brewmaster's Choice</button>
 	</form>
-
 
 <!-- no searching if not logged in, home is landing page and log in/sign up buttons -->
 
    <% }else{ %>
 
-	<h1 id="beermeh1"><span class="beermefont">Beer Me!</span></h1>
+	<h1 class="beermeh1"><span class="beermefont">Beer Me!</span></h1>
 <div class="container-fluid">
 <div class="row">
-  <div class="col-md-9 col-md-offset-2 jumbotron"><p id="landingp">Wish you could remember that delicious beer you had in the not-so-distant past? &nbsp; <span class="beermefont"> Beer Me! </span> allows you to keep them all in a neat little list. Keep tasting notes with the comments feature (coming soon!). Which beer was the best? Rate the beers on your list (coming soon!). Want to search and discover new beers to add to your To Drink list? &nbsp; <span class="beermefont"> Beer Me!</span> </p>
+  <div class="col-md-8 col-md-offset-2 jumbotron"><p class="landingp">Wish you could remember that delicious beer you had in the not-so-distant past? &nbsp; <span class="beermefont"> Beer Me! </span> allows you to keep them all in a neat little list. Keep tasting notes with the comments feature (coming soon!). Which beer was the best? Rate the beers on your list (coming soon!). Want to search and discover new beers to add to your To Drink list? &nbsp; <span class="beermefont"> Beer Me!</span> </p>
   </div>
 </div>
-</div>
-
-
 
  <h1 id="landingh1"> Log in to search for beers! </h1>
  <a href="/auth/login" class="btn btn-info">Log in</a>
  <a href="/auth/signup" class="btn btn-success">Sign up</a>
+ </div>
 <% } %>
 
 

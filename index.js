@@ -14,8 +14,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(flash());
 
-
-
 /////// using SESSION
 app.use(session({
   secret: 'so many secrets and beeeeers123',
@@ -45,20 +43,20 @@ app.use(function(req,res,next){
 });
 ///////// end session info
 
-
-
 //// show me the home page
 app.get('/', function(req, res) {
   res.render('home'); 
 });
 
-
+///show me the about page
+app.get('/about', function(req, res){
+  res.render('about');
+});
 
 ///////////// good stuff
 app.use('/beer', require('./controllers/beer'));
 app.use('/favorites', require('./controllers/favorite'));
-app.use('/auth', require('./controllers/auth.js'));  ////first part is url string, second part is page rendered
-
+app.use('/auth', require('./controllers/auth.js'));
 
 
 app.listen(process.env.PORT || 3000);
