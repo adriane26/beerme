@@ -14,8 +14,7 @@ router.get('/', function(req, res) {
       if (!err && response.statusCode === 200 && data.data[0].name) {
         res.render('beer/index', {beers: data,
                                   q: query});
-      } 
-      else {
+      } else {
         res.render('error');
       }
      });

@@ -6,11 +6,11 @@ var router = express.Router();
 router.post('/', function(req, res) {
   db.favorite.findOrCreate({
     where: {
-      beerId: req.body.beerId
+      beerId: req.body.beerId,
+      userId: req.currentUser.id
     },
     defaults: {
-      beerName: req.body.beerName,
-      userId: req.currentUser.id
+      beerName: req.body.beerName
     }
   }).spread(function(favorite, created) {
     // console.log("this is favorite.get" +favorite.get());

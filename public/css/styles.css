@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Pacifico|Satisfy|Marck+Script|Yellowtail);
+@import url(https://fonts.googleapis.com/css?family=Pacifico|Satisfy|Marck+Script|Yellowtail|Open+Sans|Karla|Lato);
 @import url(https://fonts.googleapis.com/css?family=Poppins|Raleway|Gruppo|Poiret+One|Josefin+Sans);
 
 body {
@@ -6,6 +6,7 @@ body {
 	background-attachment: fixed;
 	background-position: center;
 	min-height: 100%;
+	margin: 0 0 40px;
 	width: 100%; 
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
@@ -13,9 +14,9 @@ body {
 	margin-bottom: 60px;
 }
 
-body {
+/*body {
 	margin: 0 0 40px;
-}
+}*/
 
 html {
   position: relative;
@@ -41,16 +42,22 @@ html {
 }
 
 h1, h2, h3, h4 {
-	font-family: "Josefin Sans", sans-serif;
+	font-family: "Open Sans", sans-serif;
+	color: black;
 	text-align: center;
 }
 
 .btn, p, li {
-	font-family: "Gruppo", sans-serif;
+	font-family: "Open Sans", sans-serif;
+	/*gruppo*/
+}
+
+.btn {
+	margin: 6px;
 }
 
 label {
-	font-family: "Yellowtail", sans-serif;
+	font-family: "Lato", sans-serif;
 }
 
 #landingh1 {
@@ -60,7 +67,7 @@ label {
 	padding-bottom: 20px;
 }
 
-.beermeh1 {
+#beermeh1 {
 	padding-top: 80px;
 	color: black;
 	font-size: 48px;
@@ -76,6 +83,11 @@ img {
  	background-color:rgba(255, 255, 255, 0.3);
 }
 
+.showWell {
+	background-color:rgba(255, 255, 255, 0.8);
+	border: none;
+}
+
 .landingp {
 	font-size: 22px;
 	font-weight: bold;
@@ -83,6 +95,10 @@ img {
 	/*display: inline;*/
 	padding-top: 20px;
 	margin-top: 20px;
+}
+
+form {
+	display: inline;
 }
 
 

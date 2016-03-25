@@ -29,7 +29,6 @@ app.use(function(req,res,next){
       req.currentUser = user;
       next();
     });
-
   }else{
     req.currentUser = false;
     next();
@@ -53,10 +52,47 @@ app.get('/about', function(req, res){
   res.render('about');
 });
 
+
 ///////////// good stuff
 app.use('/beer', require('./controllers/beer'));
 app.use('/favorites', require('./controllers/favorite'));
 app.use('/auth', require('./controllers/auth.js'));
+// app.use('/comment', require('./controllers/comment.js'));
 
+
+//// error handling
+app.get('/404', function(req, res, next){
+  // res.render('error');
+  next();
+});
+
+app.get('/403', function(req, res, next){
+  // trigger a 403 error
+  var err = new Error('The beer gods have denied you!');
+  err.status = 403;
+  next(err);
+});
+
+app.get('/500', function(req, res, next){
+  // trigger a generic (500) error
+  next(new Error('The server seems to be a little tipsy at the moment...'));
+});
+
+// Error handlers
+app.use(function(req, res, next){
+  res.status(404);
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('error', { url: req.url });
+    return;
+  }
+  // respond with json
+  if (req.accepts('json')) {
+    res.send({ error: 'Not found' });
+    return;
+  }
+  // default to plain-text. send()
+  res.type('txt').send('Not found');
+});
 
 app.listen(process.env.PORT || 3000);

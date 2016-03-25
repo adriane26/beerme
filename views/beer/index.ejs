@@ -4,7 +4,7 @@
 	<% if(beer.type === 'brewery') { %>
 		<% return; %>
 	<% } else { %>
-		<div class="well well-sm">
+		<div class="well well-sm showWell">
 		 <a href="beer/show/<%=beer.id %>"><h3><%= beer.breweries[0].name +' '+ beer.name %></h3></a>
 		</div>
 	<% } %>

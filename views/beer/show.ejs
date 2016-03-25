@@ -1,32 +1,32 @@
 <div class="container-fluid" id="beershow">
-<h1><%= beer.data.breweries[0].name +' '+ beer.data.name %></h1>
+  <h1><%= beer.data.breweries[0].name +' '+ beer.data.name %></h1>
 
+  <div class="well showWell">
+  <% if(!beer.data.labels) { %>
+		<img class="img-responsive" src="/css/images/beerglass.jpg">
+  	<% } else { %>
+     <img class="img-responsive" src="<%= beer.data.labels.medium %>">
+    <% }; %>
+    
+    <h4 id="description"><%= beer.data.description %></h4>
 
+    <% if (!beer.data.abv) { %>
+      <h4>ABV: no comment...</h4>
+      <% } else { %>
+      <h4 id="abv">ABV: <%= beer.data.abv %></h4>
+    <% }; %>
 
-<div class="well">
-<% if(!beer.data.labels) { %>
-			<img class="img-responsive" src="/css/images/beerglass.jpg">
-	<% } else { %>
-   <img class="img-responsive" src="<%= beer.data.labels.medium %>">
-  <% }; %>
+    <% if (!beer.data.style) { %>
+    	<h4>Beer Style: too awesome for words</h4>
+    <% } else { %>
+    <h4 id="beerstyle">Beer Style: <%= beer.data.style.shortName %></h4>
+    <% } %>
+  </div>
 
-  <h4 id="description"><%= beer.data.description %></h4>
-
-  <h4 id="abv">ABV: <%= beer.data.abv %></h4>
-
-<% if (!beer.data.style) { %>
-	<h4>Beer Style: too awesome for words</h4>
-<% } else { %>
-  <h4 id="beerstyle">Beer Style: <%= beer.data.style.shortName %></h4>
-  <% } %>
+  <form method="POST" action="/favorites">
+    <input type="hidden" value="<%= beer.data.id %>" name="beerId">
+    <input type="hidden" value="<%= beer.data.name %>" name="beerName">
+    <input type="hidden" value="<%= currentUser.id %>" name="userId">
+    <input type="submit" class="btn btn-success" value="Add to Favorites">
+  </form>
 </div>
-
-<form method="POST" action="/favorites">
-  <input type="hidden" value="<%= beer.data.id %>" name="beerId">
-  <input type="hidden" value="<%= beer.data.name %>" name="beerName">
-  <input type="hidden" value="<%= currentUser.id %>" name="userId">
-  <input type="submit" class="btn btn-success" value="Add to Favorites">
-</form>
-</div>
-
-<!-- < user.name ? user.name : '' %> -->

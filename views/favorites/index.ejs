@@ -1,10 +1,9 @@
 <h1> <%= currentUser.name %>'s Favorites </h1>
 
 <% favorites.forEach(function(favorite) { %>
-  <div class="well well-sm">
+  <div class="well well-sm showWell">
     <h2><%= favorite.beerName %></h2>
     <a href="/beer/show/<%=favorite.beerId%>" class="btn btn-primary">Show More Details</a>
-
     <a href="/favorites/<%=favorite.beerId%>" class="btn btn-danger pull-right delete-btn">Remove</a>
   </div>
 <% }); %>
