@@ -26,10 +26,10 @@ module.exports = function(sequelize, DataTypes) {
         /// one user has many favorites
         models.user.hasMany(models.favorite);
       },
-      authenticate: function(email,password, callback){
+      authenticate: function(email, password, callback){
         this.find({where:{email:email}}).then(function(user){
           if(user){
-            bcrypt.compare(password,user.password, function(err, result){
+            bcrypt.compare(password, user.password, function(err, result){
               if(err){
                 callback(err);
               } else {
@@ -45,7 +45,7 @@ module.exports = function(sequelize, DataTypes) {
     hooks: {
       beforeCreate: function(user, options, callback){
         if(user.password){
-          bcrypt.hash(user.password,10, function(err, hash){
+          bcrypt.hash(user.password, 10, function(err, hash){
             if(err) return callback(err);
             user.password = hash;
             callback(null, user);
@@ -54,6 +54,25 @@ module.exports = function(sequelize, DataTypes) {
           callback(null, user);
         }
       }
+      // beforeCreate: function(user, options, callback){
+      //   if(user.email){
+      //     user.email.toLowerCase();
+      //     if(err) return callback(err);
+      //     callback(null, user);
+      //   } else {
+      //     callback(null, user);
+      //   }
+      // }
+
+      // beforeCreate: function(user){
+      //   user.email.toLowerCase();
+      //   console.log("this is the user "+user);
+      // }
+
+
+      // beforeCreate: function(user, options, callback){
+      //   user.email.toLowerCase();
+      // }
     }
   });
   return user;
